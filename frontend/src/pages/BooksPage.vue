@@ -1,11 +1,21 @@
 <template>
   <div>
     <h1>Страница со всеми книгами</h1>
-    <my-input
-        v-model="searchQuery"
-        placeholder="Поиск...."
-        v-focus
-    />
+
+    <div class="horizontalMenu">
+      <my-input
+          v-model="searchQuery"
+          placeholder="Поиск...."
+          v-focus
+      />
+
+      <div class="my-select">
+        <my-select
+            v-model="selectedSort"
+            :options="sortOptions"
+        />
+      </div>
+    </div>
 
     <book-list
         :books="sortedAndSearchedBooks"
@@ -20,17 +30,16 @@
 </template>
 
 <script>
-import {triggerRef} from "vue";
 import axios from "axios";
 import BookList from "@/components/BookList.vue";
 import MyInput from "@/components/UI/MyInput.vue";
-
+import MySelect from "@/components/UI/MySelect.vue";
 
 export default {
   components: {
     BookList,
     MyInput,
-
+MySelect
   },
   data() {
     return {
@@ -101,7 +110,6 @@ export default {
 
   computed: {
     sortedBooks() {
-      // console.log(...this.posts)
       if (this.selectedSort === 'id') {
         return [...this.books].sort((book1, book2) => book1[this.selectedSort] - book1[this.selectedSort])
       }
@@ -112,33 +120,30 @@ export default {
     }
   },
 
-  watch:{
-
-  }
+  watch: {}
 
 }
 </script>
 
 <style lang="scss" scoped>
-.app__btns {
-  margin: 15px 0;
-  display: flex;
-  justify-content: space-between;
-}
 .page__wrapper {
   display: flex;
   margin-top: 15px;
 }
+
 .page {
   border: 1px solid black;
   padding: 10px;
 }
+
 .current-page {
   border: 2px solid teal;
 }
 
-.observer {
-  height: 30px;
-  background: green;
+.horizontalMenu{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  height: 40px;
 }
 </style>

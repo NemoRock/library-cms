@@ -1,14 +1,16 @@
 <template>
   <div v-if="books.length> 0">
     <h3>Список книг</h3>
-    <transition-group name="book-list">
-      <book-item
-        v-for="book in books"
-        :book="book"
-        :key="books.id"
-        @remove="$emit('remove',book)"
-      />
-    </transition-group>
+    <div class="book__list">
+      <transition-group name="book-list">
+        <book-item
+            v-for="book in books"
+            :book="book"
+            :key="books.id"
+            @remove="$emit('remove',book)"
+        />
+      </transition-group>
+    </div>
   </div>
   <h2 v-else style="color: red">
     Список книг пуст
@@ -17,10 +19,11 @@
 
 <script>
 import BookItem from "@/components/BookItem.vue";
+
 export default {
   components: {BookItem},
-  props:{
-    books:{
+  props: {
+    books: {
       type: Array,
       required: true
     }
@@ -28,24 +31,32 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.user-list-item {
+<style scoped>
+.book__list {
+  display: flex;
+  align-content: flex-start;
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.book-list-item {
   display: inline-block;
   margin-right: 10px;
 }
 
-.user-list-enter-active,
-.user-list-leave-active {
+.book-list-enter-active,
+.book-list-leave-active {
   transition: all 0.4s ease;
 }
 
-.user-list-enter-from,
-.user-list-leave-to {
+.book-list-enter-from,
+.book-list-leave-to {
   opacity: 0;
-  transform: translateX(130px);
+  transform: translateY(30px);
 }
 
-.user-list-move {
+.book-list-move {
   transition: transform 0.4s ease;
 }
 </style>

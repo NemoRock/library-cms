@@ -4,6 +4,7 @@ import About from "@/pages/AboutPage.vue";
 import MyMain from "@/pages/my/MainPage.vue"
 import BooksPage from "@/pages/BooksPage.vue";
 import AdminPage from "@/pages/AdminPage.vue";
+import BookIdPage from "@/pages/BookIdPage.vue";
 
 const routes = [
     {
@@ -25,6 +26,10 @@ const routes = [
     {
         path: '/admin',
         component: AdminPage
+    },
+    {
+        path: '/books/:id',
+        component: BookIdPage
     }
 ];
 
