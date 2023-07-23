@@ -3,7 +3,6 @@
 namespace tests\Feature\Api;
 
 use App\Models\Category;
-use Illuminate\Console\Scheduling\CacheAware;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -11,13 +10,17 @@ class CategoryTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutExceptionHandling();
+    }
+
     /**
      * @test
      */
     public function a_category_can_be_stored()
     {
-        $this->withoutExceptionHandling();
-
         $data = [
             'title' => 'Some',
             'slug' => 'fantastic',
@@ -46,8 +49,6 @@ class CategoryTest extends TestCase
      */
     public function a_category_can_be_updated()
     {
-        $this->withoutExceptionHandling();
-
         $category = Category::factory()->create();
 
         $data = [
@@ -72,16 +73,14 @@ class CategoryTest extends TestCase
      */
     public function response_for_route_categories_index_is_view_category_index_with_categories()
     {
-        $this->withoutExceptionHandling();
-
         $categories = Category::factory(10)->create();
 
         $res = $this->get('/api/categories');
 
         $res->assertOk();
 
-        $json = $categories->map(function ($category){
-            return[
+        $json = $categories->map(function ($category) {
+            return [
                 'id' => $category->id,
                 'title' => $category->title,
                 'slug' => $category->slug,
@@ -98,8 +97,6 @@ class CategoryTest extends TestCase
      */
     public function response_for_route_categories_show_is_view_categories_show_with_single_category()
     {
-        $this->withoutExceptionHandling();
-
         $category = Category::factory()->create();
 
         $res = $this->get('/api/categories/' . $category->id);
@@ -118,16 +115,14 @@ class CategoryTest extends TestCase
      */
     public function a_category_can_be_deleted()
     {
-        $this->withoutExceptionHandling();
-
         $category = Category::factory()->create();
 
-        $res = $this->delete('/api/categories/'.$category->id);
+        $res = $this->delete('/api/categories/' . $category->id);
 
-        $this->assertDatabaseCount('categories', 0);
+        $this->assertSoftDeleted($category);
 
         $res->assertJson([
-           'message' => 'deleted'
+            'message' => 'deleted'
         ]);
     }
 }

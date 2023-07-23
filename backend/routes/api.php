@@ -23,3 +23,9 @@ Route::get('categories/{category}',[\App\Http\Controllers\Api\CategoryController
 Route::patch('/categories/{category}',[\App\Http\Controllers\Api\CategoryController::class, 'update']);
 Route::get('/categories',[\App\Http\Controllers\Api\CategoryController::class, 'index']);
 Route::delete('/categories/{category}',[\App\Http\Controllers\Api\CategoryController::class, 'destroy']);
+
+Route::post('/books',[\App\Http\Controllers\Api\BookController::class, 'store']);
+Route::get('books/{book}',[\App\Http\Controllers\Api\BookController::class, 'show']);
+Route::patch('/books/{book}',[\App\Http\Controllers\Api\BookController::class, 'update']);
+Route::get('/books',[\App\Http\Controllers\Api\BookController::class, 'index']);
+Route::delete('/books/{book}',[\App\Http\Controllers\Api\BookController::class, 'destroy']);

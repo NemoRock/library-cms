@@ -7,14 +7,13 @@ use App\Http\Requests\Api\Category\StoreRequest;
 use App\Http\Requests\Api\Category\UpdateRequest;
 use App\Http\Resources\Category\CategoryResource;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): array
     {
         $category = Category::all();
         return CategoryResource::collection($category)->resolve();
@@ -23,7 +22,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request): array
     {
         $data = $request->validated();
         $category = Category::create($data);
@@ -34,7 +33,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Category $category): array
     {
         return CategoryResource::make($category)->resolve();
     }
@@ -42,7 +41,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, Category $category)
+    public function update(UpdateRequest $request, Category $category): array
     {
         $data = $request->validated();
 
@@ -54,7 +53,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): \Illuminate\Http\JsonResponse
     {
         $category->delete();
 

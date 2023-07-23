@@ -9,12 +9,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @method static first()
  */
-class Category extends Model
+class Book extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'categories';
+    protected $table = 'books';
     protected $guarded = false;
-}
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'book_categories', 'book_id', 'category_id');
+    }
+}
