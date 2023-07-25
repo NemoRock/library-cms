@@ -6,6 +6,416 @@
     },
     "paths": {
         "/api/": {},
+        "/api/books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "List",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Some title"
+                                        },
+                                        "slug": {
+                                            "type": "string",
+                                            "example": "Some slug"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Some author"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Some description"
+                                        },
+                                        "rating": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "preview_image_url": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "main_image_url": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "category_ids": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-07-25"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-07-25"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "title": {
+                                                            "type": "string"
+                                                        },
+                                                        "slug": {
+                                                            "type": "string"
+                                                        },
+                                                        "author": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": {
+                                                            "type": "string"
+                                                        },
+                                                        "rating": {
+                                                            "type": "integer"
+                                                        },
+                                                        "preview_image": {
+                                                            "type": "string"
+                                                        },
+                                                        "main_image": {
+                                                            "type": "string"
+                                                        },
+                                                        "category_ids": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "title": "Some title",
+                                "slug": "Some slug",
+                                "author": "Some author",
+                                "description": "Some description",
+                                "rating": 10
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Some title"
+                                        },
+                                        "slug": {
+                                            "type": "string",
+                                            "example": "Some slug"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Some author"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Some description"
+                                        },
+                                        "rating": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "preview_image_url": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "main_image_url": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "category_ids": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-07-25"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-07-25"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/books/{book}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Book",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID book",
+                        "required": true,
+                        "example": 2
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Some title"
+                                                },
+                                                "slug": {
+                                                    "type": "string",
+                                                    "example": "Some slug"
+                                                },
+                                                "author": {
+                                                    "type": "string",
+                                                    "example": "Some author"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Some description"
+                                                },
+                                                "rating": {
+                                                    "type": "integer",
+                                                    "example": 10
+                                                },
+                                                "preview_image_url": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "main_image_url": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "category_ids": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-07-25"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-07-25"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Delete",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID book",
+                        "required": true,
+                        "example": 2
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Update",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID book",
+                        "required": true,
+                        "example": 2
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Some title for edit"
+                                            },
+                                            "slug": {
+                                                "type": "string",
+                                                "example": "Some slug for edit"
+                                            },
+                                            "author": {
+                                                "type": "string",
+                                                "example": "Some author for edit"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "Some description for edit"
+                                            },
+                                            "rating": {
+                                                "type": "integer",
+                                                "example": 9
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Some title"
+                                                },
+                                                "slug": {
+                                                    "type": "string",
+                                                    "example": "Some slug"
+                                                },
+                                                "author": {
+                                                    "type": "string",
+                                                    "example": "Some author"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Some description"
+                                                },
+                                                "rating": {
+                                                    "type": "integer",
+                                                    "example": 9
+                                                },
+                                                "preview_image_url": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "main_image_url": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "category_ids": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-07-25"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-07-25"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/categories": {
             "get": {
                 "tags": [
