@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/books",
  *     summary="Create",
  *     tags={"Books"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\RequestBody(
  *         @OA\JsonContent(
@@ -59,6 +60,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/books",
  *     summary="List",
  *     tags={"Books"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Response(
  *         response=200,
@@ -85,6 +87,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/books/{book}",
  *     summary="Book",
  *     tags={"Books"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Parameter (
  *         description="ID book",
@@ -119,6 +122,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/books/{book}",
  *     summary="Update",
  *     tags={"Books"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Parameter (
  *         description="ID book",
@@ -166,6 +170,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/books/{book}",
  *     summary="Delete",
  *     tags={"Books"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Parameter (
  *         description="ID book",

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/categories",
  *     summary="Create",
  *     tags={"Category"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\RequestBody(
  *         @OA\JsonContent(
@@ -45,6 +46,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/categories",
  *     summary="List",
  *     tags={"Category"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Response(
  *         response=200,
@@ -66,6 +68,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/categories/{category}",
  *     summary="Category",
  *     tags={"Category"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Parameter (
  *         description="ID category",
@@ -94,6 +97,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/categories/{category}",
  *     summary="Update",
  *     tags={"Category"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Parameter (
  *         description="ID category",
@@ -132,6 +136,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/categories/{category}",
  *     summary="Delete",
  *     tags={"Category"},
+ *     security={{ "bearerAuth": {} }},
  *
  *     @OA\Parameter (
  *         description="ID category",
