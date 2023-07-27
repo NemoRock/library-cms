@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static first()
+ * @method static create(string[] $category)
  */
 class Category extends Model
 {
